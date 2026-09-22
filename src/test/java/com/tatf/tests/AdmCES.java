@@ -93,6 +93,7 @@ public class AdmCES {
         browser.find().css("button.swal2-confirm").click();
     }
 
+    //Funcion auxiliar para ingresar con cuenta predeterminada o de prueba
     private void ingresoCuentaPredeterminada(String emailPredeterminado, String passwordPredeterminada) {
         browser.find().link("INICIAR SESIÓN").click();
         browser.find().xpath("//input[@name='inputEmail']").write(emailPredeterminado);
@@ -111,6 +112,7 @@ public class AdmCES {
         browser.find().css("button.swal2-confirm.swal2-styled.swal2-default-outline").click();
     };
 
+    //Funcion auxiliar para crear un usuario del tipo "Tester"
     private void crearUsuarioTester(String nombreTester, String apellidoTester, String emailTester, String pais, String passwordTester){
         browser.find().link("CREAR USUARIO").click();
         browser.find().xpath("//input[@name='inputFirstName']").write(nombreTester);
