@@ -35,3 +35,7 @@ ingresoUsuarioAdmin() : Funcion auxiliar para ingreso e usuario Admin
 ingresoCuentaPredeterminada() : Funcion auxiliar para ingresar con cuenta predeterminada o de prueba
 reinicioPassword() : Funcion auxiliar para reiniciar contraseña
 crearUsuarioTester() : Funcion auxiliar para crear un usuario del tipo "Tester"
+
+9/25/2026 - 9/29/2026
+
+Se aplica el metodo POM sobre los Test realizados en la semana 6.

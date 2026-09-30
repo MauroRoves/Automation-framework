@@ -1,4 +1,4 @@
-package com.tatf.tests;
+package aVersionAnterior;
 
 
 import com.tatf.core.browser.BrowserFactory;
