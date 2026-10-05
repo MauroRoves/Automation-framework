@@ -46,24 +46,29 @@ public class AccesoPO {
         this.browser.find().link(crearUsuarioTester).click();
     }
 
-    public String getCurrentUrl() {
-        return this.browser.interaction().url();
-    }
 
+    /*
     public void apretarIniciarSesion() {
         this.browser.find().link(iniciarSesionButton).click();
     }
+    */
 
+    //ver posible selector css
     public void abrirMenuUsuario() {
         this.browser.find().xpath(verUsuariosButton).click();
     }
 
+    //ver posible selector css
     public void irAPerfil() {
         this.browser.find().xpath(verPerfilButton).click();
     }
 
     public void irAVerUsuarios() {
         this.browser.find().link(verListaUsuariosButton).click();
+    }
+
+    public String getCurrentUrl() {
+        return this.browser.interaction().url();
     }
 
 }

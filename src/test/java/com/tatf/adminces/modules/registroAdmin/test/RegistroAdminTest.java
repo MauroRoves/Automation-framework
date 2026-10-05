@@ -1,15 +1,18 @@
 package com.tatf.adminces.modules.registroAdmin.test;
 
+import com.tatf.adminces.modules.acceso.data.AccesoData;
 import com.tatf.adminces.modules.acceso.task.AccesoTask;
+import com.tatf.adminces.modules.ingreso.data.IngresoData;
 import com.tatf.adminces.modules.ingreso.task.IngresoTask;
 import com.tatf.adminces.modules.login.task.LoginTask;
 import com.tatf.adminces.modules.registroAdmin.data.RegistroData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import com.tatf.adminces.modules.profile.task.ProfileTask;
 import com.tatf.adminces.modules.registroAdmin.task.RegistroTask;
 import com.tatf.adminces.modules.base.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 public class RegistroAdminTest extends BaseTest {
 
@@ -23,8 +26,8 @@ public class RegistroAdminTest extends BaseTest {
     @BeforeEach
     public void configurar() {
         this.ingresoTask = new IngresoTask(browser);
-        this.ingresoTask.ingresarAPaginaAdminCES(URL_ESPERADA, HASH);
-        this.ingresoTask.verifyUrl(URL_ESPERADA);
+        this.ingresoTask.ingresarAPaginaAdminCES(IngresoData.URL_ESPERADA, IngresoData.HASH);
+        this.ingresoTask.verifyUrl(IngresoData.URL_ESPERADA);
         this.accesoTask = new AccesoTask(browser);
         this.registrarAdminTask = new RegistroTask(browser);
         this.ingresoAdminTask = new LoginTask(browser);
@@ -34,16 +37,21 @@ public class RegistroAdminTest extends BaseTest {
     }
 
 
-    @Test
+    @ParameterizedTest(name = "{arguments}")
+    @CsvFileSource(
+            resources = "/registroAdmin.csv",
+            useHeadersInDisplayName = true
+    )
     @DisplayName("Registrar admin con usuario y contraseña correctos")
-    public void registrarAdminTest() {
-        this.accesoTask.verifyButtonCrearCuentaAdmin(BOTON_REGISTRARSE);
+    public void registrarAdminTest(String nombre, String apellido, String email, String password,
+                                   String repetirPassword, String pais, String perfil) {
+        this.accesoTask.verifyButtonCrearCuentaAdmin(AccesoData.BOTON_REGISTRARSE);
         this.accesoTask.irCrearCuentaAdmin();
         this.accesoTask.verifyUrl(RegistroData.URL_REGISTRAR_ADMIN_ESPERADA);
-        this.registrarAdminTask.registerAdminAndVerify(ADMIN_NOMBRE, ADMIN_APELLIDO, ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_REPETIR_PASSWORD, ADMIN_PAIS);
-        this.ingresoAdminTask.iniciarSesion(ADMIN_EMAIL, ADMIN_PASSWORD);
+        this.registrarAdminTask.registrarAdmin(nombre, apellido, email, password, repetirPassword, pais);
+        this.ingresoAdminTask.iniciarSesion(email, password);
         this.accesoTask.irAPerfil();
-        this.profileTask.verificarDatosAdmin(ADMIN_NOMBRE, ADMIN_APELLIDO, ADMIN_EMAIL, ADMIN_PAIS, ADMIN_PERFIL);
+        this.profileTask.verificarDatosAdmin(nombre, apellido, email, pais, perfil);
     }
 }
 

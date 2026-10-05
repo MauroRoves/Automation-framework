@@ -1,5 +1,6 @@
 package com.tatf.adminces.modules.ingreso.test;
 
+import com.tatf.adminces.modules.ingreso.data.IngresoData;
 import com.tatf.adminces.modules.ingreso.task.IngresoTask;
 import com.tatf.adminces.modules.base.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +21,7 @@ public class IngresoTest extends BaseTest {
     @Test
     @DisplayName("Acceso al sitio AdminCES")
     public void accesoAdminCES() {
-        this.ingresoTask.ingresarAPaginaAdminCES(URL_ESPERADA, HASH);
-        this.ingresoTask.verifyUrl(URL_ESPERADA);
+        this.ingresoTask.ingresarAPaginaAdminCES(IngresoData.URL_ESPERADA, IngresoData.HASH);
+        this.ingresoTask.verifyUrl(IngresoData.URL_ESPERADA);
     }
 }

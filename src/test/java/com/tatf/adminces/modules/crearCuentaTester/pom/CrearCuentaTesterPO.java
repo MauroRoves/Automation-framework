@@ -5,37 +5,36 @@ import com.tatf.core.browser.IBrowser;
 public class CrearCuentaTesterPO {
     private final IBrowser browser;
 
-    private final String firstNameInput = "//input[@name='inputFirstName']";
-    private final String lastNameInput = "//input[@name='inputLastName']";
-    private final String emailInput = "//input[@name='inputEmail']";
-    private final String countrySelect = "//select[@name='inputCountry']";
-    private final String passwordInput = "//input[@name='inputPassword']";
+    private final String firstNameInput = "inputFirstName";
+    private final String lastNameInput = "inputLastName";
+    private final String emailInput = "inputEmail";
+    private final String countrySelect = "inputCountry";
+    private final String passwordInput = "inputPassword";
     private final String testerJuniorOption = "testerJunior";
     private final String registerButton = "btnRegister";
-    private final String confirmButton = "button.swal2-confirm";
 
     public CrearCuentaTesterPO(IBrowser browser) {
         this.browser = browser;
     }
 
     public void enterFirstName(String nombre) {
-        this.browser.find().xpath(firstNameInput).write(nombre);
+        this.browser.find().name(firstNameInput).write(nombre);
     }
 
     public void enterLastName(String apellido) {
-        this.browser.find().xpath(lastNameInput).write(apellido);
+        this.browser.find().name(lastNameInput).write(apellido);
     }
 
     public void enterEmail(String email) {
-        this.browser.find().xpath(emailInput).write(email);
+        this.browser.find().name(emailInput).write(email);
     }
 
     public void selectCountry(String pais) {
-        this.browser.find().xpath(countrySelect).selectValue(pais);
+        this.browser.find().name(countrySelect).selectValue(pais);
     }
 
     public void enterPassword(String password) {
-        this.browser.find().xpath(passwordInput).write(password);
+        this.browser.find().name(passwordInput).write(password);
     }
 
     public void selectTesterJunior() {
@@ -44,9 +43,5 @@ public class CrearCuentaTesterPO {
 
     public void clickRegister() {
         this.browser.find().id(registerButton).click();
-    }
-
-    public void confirmarAlerta() {
-        this.browser.find().css(confirmButton).click();
     }
 }

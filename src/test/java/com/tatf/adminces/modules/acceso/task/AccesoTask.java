@@ -59,11 +59,5 @@ public class AccesoTask {
         this.acceso.apretarCrearUsuarioTester();
     }
 
-     /*
 
-    public void volverAlInicio() {
-        this.acceso.volverAlInicio();
-    }
-
-     */
 }

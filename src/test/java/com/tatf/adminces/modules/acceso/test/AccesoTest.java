@@ -13,22 +13,21 @@ import org.junit.jupiter.api.Test;
 
 public class AccesoTest extends BaseTest {
     private IngresoTask ingresoTask;
-
     private AccesoTask accesoTask;
 
     @BeforeEach
     public void configurar() {
         this.ingresoTask = new IngresoTask(browser);
         this.accesoTask = new AccesoTask(browser);
-        this.ingresoTask.ingresarAPaginaAdminCES(URL_ESPERADA, HASH);
-        this.ingresoTask.verifyUrl(URL_ESPERADA);
+        this.ingresoTask.ingresarAPaginaAdminCES(IngresoData.URL_ESPERADA, IngresoData.HASH);
+        this.ingresoTask.verifyUrl(IngresoData.URL_ESPERADA);
     }
 
     @Disabled
     @Test
     @DisplayName("Acceder a registrar usuario Admin")
     public void irRegistrarUsuarioAdmin() {
-        this.accesoTask.verifyButtonCrearCuentaAdmin(BOTON_REGISTRARSE);
+        this.accesoTask.verifyButtonCrearCuentaAdmin(AccesoData.BOTON_REGISTRARSE);
         this.accesoTask.irCrearCuentaAdmin();
         this.accesoTask.verifyUrl(RegistroData.URL_REGISTRAR_ADMIN_ESPERADA);
     }

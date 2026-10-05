@@ -1,14 +1,17 @@
 package com.tatf.adminces.modules.crearCuentaTester.task;
 
 import com.tatf.adminces.modules.crearCuentaTester.pom.CrearCuentaTesterPO;
+import com.tatf.adminces.modules.popUp.pom.PopUPPO;
 import com.tatf.core.browser.IBrowser;
 
 
 public class CrearCuentaTesterTask {
     private final CrearCuentaTesterPO crearcuentaTesterPO;
+    private final PopUPPO popupPO;
 
     public CrearCuentaTesterTask(IBrowser browser) {
         this.crearcuentaTesterPO = new CrearCuentaTesterPO(browser);
+        this.popupPO = new PopUPPO(browser);
     }
 
     public void crearUsuarioTester(String nombre, String apellido, String email, String pais, String password) {
@@ -19,6 +22,6 @@ public class CrearCuentaTesterTask {
         this.crearcuentaTesterPO.enterPassword(password);
         this.crearcuentaTesterPO.selectTesterJunior();
         this.crearcuentaTesterPO.clickRegister();
-        this.crearcuentaTesterPO.confirmarAlerta();
+        this.popupPO.confirmar();
     }
 }

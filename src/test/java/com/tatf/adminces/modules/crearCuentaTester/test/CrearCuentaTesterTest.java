@@ -3,16 +3,22 @@ package com.tatf.adminces.modules.crearCuentaTester.test;
 import com.tatf.adminces.modules.acceso.data.AccesoData;
 import com.tatf.adminces.modules.acceso.task.AccesoTask;
 import com.tatf.adminces.modules.base.BaseTest;
+import com.tatf.adminces.modules.crearCuentaTester.data.CrearCuentaTesterData;
 import com.tatf.adminces.modules.crearCuentaTester.task.CrearCuentaTesterTask;
 import com.tatf.adminces.modules.ingreso.task.IngresoTask;
+import com.tatf.adminces.modules.login.data.LoginData;
 import com.tatf.adminces.modules.login.task.LoginTask;
 import com.tatf.adminces.modules.profile.task.ProfileTask;
 import com.tatf.adminces.modules.reiniciarPass.data.ReiniciarPassData;
 import com.tatf.adminces.modules.verUsuarios.data.VerUsuariosData;
 import com.tatf.adminces.modules.verUsuarios.task.VerUsuariosTask;
+import com.tatf.adminces.modules.ingreso.data.IngresoData;
+import com.tatf.adminces.modules.ingreso.task.IngresoTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 public class CrearCuentaTesterTest extends BaseTest {
 
@@ -26,8 +32,8 @@ public class CrearCuentaTesterTest extends BaseTest {
     @BeforeEach
     public void configurar() {
         this.ingresoTask = new IngresoTask(browser);
-        this.ingresoTask.ingresarAPaginaAdminCES(URL_ESPERADA, HASH);
-        this.ingresoTask.verifyUrl(URL_ESPERADA);
+        this.ingresoTask.ingresarAPaginaAdminCES(IngresoData.URL_ESPERADA, IngresoData.HASH);
+        this.ingresoTask.verifyUrl(IngresoData.URL_ESPERADA);
         this.accesoTask = new AccesoTask(browser);
         this.ingresoPredeterminadaTask = new LoginTask(browser);
         this.profileTask = new ProfileTask(browser);
@@ -37,19 +43,22 @@ public class CrearCuentaTesterTest extends BaseTest {
 
     }
 
-    @Test
+    @ParameterizedTest(name = "{arguments}")
+    @CsvFileSource(
+            resources = "/crearCuentaTester.csv",
+            useHeadersInDisplayName = true
+    )
     @DisplayName("Crear cuenta Tester Junior y verificar")
-    public void crearCuentaTester() {
-        this.accesoTask.verifyButtonIniciarSesion(BOTON_INICIAR_SESION);
-        this.ingresoPredeterminadaTask.iniciarSesion(PREDETERMINADA_EMAIL, PREDETERMINADA_PASSWORD);
-        this.accesoTask.verifyButtonCrearCuentaTester(BOTON_CREAR_USUARIO);
+    public void crearCuentaTester(String nombre, String apellido, String email, String pais,
+                                  String password, String perfil) {
+        this.accesoTask.verifyButtonIniciarSesion(AccesoData.BOTON_INICIAR_SESION);
+        this.ingresoPredeterminadaTask.iniciarSesion(LoginData.PREDETERMINADA_EMAIL, LoginData.PREDETERMINADA_PASSWORD);
+        this.accesoTask.verifyButtonCrearCuentaTester(AccesoData.BOTON_CREAR_USUARIO);
         this.accesoTask.irCrearCuentaTester();
-        this.crearCuentaTesterTask.crearUsuarioTester(NOMBRE_TESTER, APELLIDO_TESTER, EMAIL_TESTER, PAIS_TESTER, PASSWORD_TESTER);
+        this.crearCuentaTesterTask.crearUsuarioTester(nombre ,apellido ,email ,pais ,password);
         this.accesoTask.irAVerUsuarios();
         this.accesoTask.verifyUrl(VerUsuariosData.URL_VER_USUARIOS_ESPERADA);
-        this.verUsuariosTask.verificarUsuarioEnLista(EMAIL_TESTER, NOMBRE_TESTER, APELLIDO_TESTER, PAIS_TESTER, PERFIL_TESTER);
-
-
+        this.verUsuariosTask.verificarUsuarioEnLista(email, nombre, apellido, pais, perfil);
     }
 
 

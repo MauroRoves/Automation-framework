@@ -11,7 +11,6 @@ public class VerUsuariosPO {
     private final String emailEnTablaTemplate = "//td[text()=\"%s\"]";
     private final String paisPorEmailTemplate = "//td[text()='%s']/following-sibling::td[1]";
     private final String perfilPorEmailTemplate = "//td[text()='%s']/following-sibling::td[2]";
-    private final String confirmButton = "button.swal2-confirm.swal2-styled.swal2-default-outline";
 
     public VerUsuariosPO(IBrowser browser) {
         this.browser = browser;
@@ -42,10 +41,8 @@ public class VerUsuariosPO {
         return this.browser.find().xpath(selector).getText();
     }
 
-    public void eliminarUsuario(String email) {
+    public void clickEliminar(String email) {
         this.browser.find().id(email).click();
-        this.browser.find().css(confirmButton).click();
-        this.browser.find().css(confirmButton).click();
     }
 
     public boolean existeUsuario(String email) {
