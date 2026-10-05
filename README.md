@@ -39,3 +39,9 @@ crearUsuarioTester() : Funcion auxiliar para crear un usuario del tipo "Tester"
 9/25/2026 - 9/29/2026
 
 Se aplica el metodo POM sobre los Test realizados en la semana 6.
+
+10/4/2026
+
+se realizan cambios segun retroalimentacion
+se agrega parametrizacion a los 4 test respectivos a la tarea. (se crean los archivos crearCuenta.csv, eliminarTester.csv, registroAdmin.csv, reinicarPass.csv)
+    
