@@ -6,10 +6,7 @@ import com.tatf.adminces.modules.base.BaseTest;
 import com.tatf.adminces.modules.ingreso.data.IngresoData;
 import com.tatf.adminces.modules.ingreso.task.IngresoTask;
 import com.tatf.adminces.modules.registroAdmin.data.RegistroData;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class AccesoTest extends BaseTest {
     private IngresoTask ingresoTask;
@@ -23,7 +20,7 @@ public class AccesoTest extends BaseTest {
         this.ingresoTask.verifyUrl(IngresoData.URL_ESPERADA);
     }
 
-    @Disabled
+    @Tag("humo")
     @Test
     @DisplayName("Acceder a registrar usuario Admin")
     public void irRegistrarUsuarioAdmin() {

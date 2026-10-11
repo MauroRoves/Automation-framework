@@ -44,4 +44,31 @@ Se aplica el metodo POM sobre los Test realizados en la semana 6.
 
 se realizan cambios segun retroalimentacion
 se agrega parametrizacion a los 4 test respectivos a la tarea. (se crean los archivos crearCuenta.csv, eliminarTester.csv, registroAdmin.csv, reinicarPass.csv)
+Los nuevos cambios se encuentran dentro del branch de la semana pasada "semana6"
+
+10/11/2026
+
+Se agregan datos a los archivos crearCuenta.csv, eliminarTester.csv, registroAdmin.csv, reinicarPass.csv
+
+Se instalan las dependencias necesarias paa poder generar las suites
+
+Se agrega la clase "ConfigReader"
+Se agrega "Firefox Driver" para poder ejectuar pruebas en Mozilla Firefox
+Se agrega el archivo config.properties
+Se modifica la clase "BrowserFactory"
+
+Se instalan las dependencias necesarias para poder generar los reportes en Allure
+
+Se crean las suite:
+    "FlujoCompleto":se encarga de probar los 4 test hasta el momento, Crear cuenta Admin, Crear cuenta Tester, Reiniciar Contraseña, Borrar usuario Tester.
+    Actua seleccionando por package
+
+    "ModificacionUsuarios": se encarga de probar lo referente a modificaciones, Reiniciar Contraseña, Borrar usuario Tester.
+    Actua seleccionando por package y tags
+
+    "RegistroUsuarios": se encarga de probar lo referente a registros, Crear cuenta Admin, Crear cuenta Tester.
+    Actua seleccionando por clase
+
+    "CrearEliminar": se encarga de probar crear y elimina un usuaio Tester
+    Actua seleccionando por package y tag (include y exclude)
     

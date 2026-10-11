@@ -11,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import com.tatf.adminces.modules.profile.task.ProfileTask;
 import com.tatf.adminces.modules.registroAdmin.task.RegistroTask;
 import com.tatf.adminces.modules.base.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -37,6 +38,9 @@ public class RegistroAdminTest extends BaseTest {
     }
 
 
+    @Tag("humo")
+    @Tag("usuarios")
+    @Tag("registro-admin")
     @ParameterizedTest(name = "{arguments}")
     @CsvFileSource(
             resources = "/registroAdmin.csv",

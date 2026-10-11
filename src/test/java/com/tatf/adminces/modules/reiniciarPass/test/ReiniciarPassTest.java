@@ -11,6 +11,7 @@ import com.tatf.adminces.modules.reiniciarPass.data.ReiniciarPassData;
 import com.tatf.adminces.modules.reiniciarPass.task.ReiniciarPassTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -32,6 +33,8 @@ public class ReiniciarPassTest extends BaseTest {
 
     }
 
+    @Tag("usuarios")
+    @Tag("reiniciar-password")
     @ParameterizedTest(name = "{arguments}")
     @CsvFileSource(
             resources = "/reiniciarPass.csv",

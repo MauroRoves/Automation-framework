@@ -1,6 +1,11 @@
 package com.tatf.adminces.modules.ingreso.data;
 
+import com.tatf.core.util.ConfigReader;
+
 public class IngresoData {
-    public static final String URL_ESPERADA = "http://cestore.ces.com.uy/adminces/";
-    public static final String HASH = "3)ea60e0be3ba12c6ecd%7297868%5c4";
+    private static final ConfigReader CONFIG = new ConfigReader("config.properties");
+
+    public static final String URL_ESPERADA = CONFIG.asString("adminces.url");
+    public static final String HASH = CONFIG.asString("adminces.hash");
+
 }

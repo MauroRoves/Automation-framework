@@ -11,6 +11,7 @@ import com.tatf.adminces.modules.verUsuarios.data.VerUsuariosData;
 import com.tatf.adminces.modules.verUsuarios.task.VerUsuariosTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -34,6 +35,10 @@ public class VerUsuariosTest extends BaseTest {
     }
 
 
+
+
+    @Tag("usuarios")
+    @Tag("eliminar-usuarios")
     @ParameterizedTest(name = "{arguments}")
     @CsvFileSource(
             resources = "/eliminarTester.csv",

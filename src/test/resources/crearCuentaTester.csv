@@ -1,2 +1,4 @@
 nombre,apellido,email,pais,password,perfil
 Diego,Rodriguez,diego@gmail.com,Uruguay,1234567,Tester Junior
+Juan,Gonzales,juan@gmail.com,Argentina,7654321,Tester Senior
+Valentina,Goncalves,vale@gmail.com,Brasil,9876543,Tester Líder

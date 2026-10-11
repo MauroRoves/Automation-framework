@@ -3,26 +3,22 @@ package com.tatf.adminces.modules.base;
 import com.tatf.core.browser.BrowserFactory;
 import com.tatf.core.browser.IBrowser;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest {
     protected static IBrowser browser;
-    protected static String url;
-    protected static String hash;
 
 
-
-    @BeforeAll
-    static public void configuration() {
-        browser = BrowserFactory.getBrowser(true);
-        url = "http://cestore.ces.com.uy/adminces/";
-        hash = "3)ea60e0be3ba12c6ecd%7297868%5c4";
-
+    @BeforeEach
+    public void configuration() {
+        browser = BrowserFactory.getBrowser();
     }
 
-
-    @AfterAll
-    static public void close() {
+    @AfterEach
+    public void cerrar() {
         BrowserFactory.quitBrowser();
     }
+
 }

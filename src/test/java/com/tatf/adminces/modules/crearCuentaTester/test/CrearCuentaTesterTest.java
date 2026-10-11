@@ -16,6 +16,7 @@ import com.tatf.adminces.modules.ingreso.data.IngresoData;
 import com.tatf.adminces.modules.ingreso.task.IngresoTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -43,6 +44,9 @@ public class CrearCuentaTesterTest extends BaseTest {
 
     }
 
+    @Tag("humo")
+    @Tag("usuarios")
+    @Tag("registro-tester")
     @ParameterizedTest(name = "{arguments}")
     @CsvFileSource(
             resources = "/crearCuentaTester.csv",
@@ -55,7 +59,7 @@ public class CrearCuentaTesterTest extends BaseTest {
         this.ingresoPredeterminadaTask.iniciarSesion(LoginData.PREDETERMINADA_EMAIL, LoginData.PREDETERMINADA_PASSWORD);
         this.accesoTask.verifyButtonCrearCuentaTester(AccesoData.BOTON_CREAR_USUARIO);
         this.accesoTask.irCrearCuentaTester();
-        this.crearCuentaTesterTask.crearUsuarioTester(nombre ,apellido ,email ,pais ,password);
+        this.crearCuentaTesterTask.crearUsuarioTester(nombre ,apellido ,email ,pais ,password, perfil);
         this.accesoTask.irAVerUsuarios();
         this.accesoTask.verifyUrl(VerUsuariosData.URL_VER_USUARIOS_ESPERADA);
         this.verUsuariosTask.verificarUsuarioEnLista(email, nombre, apellido, pais, perfil);

@@ -11,6 +11,8 @@ public class CrearCuentaTesterPO {
     private final String countrySelect = "inputCountry";
     private final String passwordInput = "inputPassword";
     private final String testerJuniorOption = "testerJunior";
+    private final String testerSeniorOption = "testerSenior";
+    private final String testerLiderOption = "testerLead";
     private final String registerButton = "btnRegister";
 
     public CrearCuentaTesterPO(IBrowser browser) {
@@ -37,8 +39,26 @@ public class CrearCuentaTesterPO {
         this.browser.find().name(passwordInput).write(password);
     }
 
+    /*
     public void selectTesterJunior() {
         this.browser.find().id(testerJuniorOption).click();
+    }
+    */
+
+    public void selectPerfil(String perfil) {
+        switch (perfil) {
+            case "Tester Junior":
+                this.browser.find().id(testerJuniorOption).click();
+                break;
+            case "Tester Senior":
+                this.browser.find().id(testerSeniorOption).click();
+                break;
+            case "Tester Líder":
+            this.browser.find().id(testerLiderOption).click();
+            break;
+            default:
+                throw new IllegalArgumentException("El pefil no coincide: " + perfil);
+        }
     }
 
     public void clickRegister() {

@@ -14,13 +14,13 @@ public class CrearCuentaTesterTask {
         this.popupPO = new PopUPPO(browser);
     }
 
-    public void crearUsuarioTester(String nombre, String apellido, String email, String pais, String password) {
+    public void crearUsuarioTester(String nombre, String apellido, String email, String pais, String password, String perfil) {
         this.crearcuentaTesterPO.enterFirstName(nombre);
         this.crearcuentaTesterPO.enterLastName(apellido);
         this.crearcuentaTesterPO.enterEmail(email);
         this.crearcuentaTesterPO.selectCountry(pais);
         this.crearcuentaTesterPO.enterPassword(password);
-        this.crearcuentaTesterPO.selectTesterJunior();
+        this.crearcuentaTesterPO.selectPerfil(perfil);
         this.crearcuentaTesterPO.clickRegister();
         this.popupPO.confirmar();
     }

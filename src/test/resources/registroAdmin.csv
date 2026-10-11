@@ -1,2 +1,3 @@
 nombre,apellido,email,password,repetirPassword,pais,perfil
 Mauro,Roves,mauro@gmail.com,54321,54321,Uruguay,Administrador
+Daniel,Deleon,daniel@gmail.com,78965,78965,Argentina,Administrador
