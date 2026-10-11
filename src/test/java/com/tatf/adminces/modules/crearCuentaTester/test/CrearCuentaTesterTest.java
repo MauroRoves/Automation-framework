@@ -52,7 +52,7 @@ public class CrearCuentaTesterTest extends BaseTest {
             resources = "/crearCuentaTester.csv",
             useHeadersInDisplayName = true
     )
-    @DisplayName("Crear cuenta Tester Junior y verificar")
+    @DisplayName("Crear cuenta Tester por senioity y verificar")
     public void crearCuentaTester(String nombre, String apellido, String email, String pais,
                                   String password, String perfil) {
         this.accesoTask.verifyButtonIniciarSesion(AccesoData.BOTON_INICIAR_SESION);
